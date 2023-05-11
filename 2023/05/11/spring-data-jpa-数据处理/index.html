@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>spring data jpa 数据处理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="spring data jpa 数据处理详细教程spring in action Spring 入门详细教程请参考：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-action-v5-translate&#x2F;tree&#x2F;master&#x2F;di-3-zhang-chu-li-shu-ju 源码如下：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-acti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring data jpa 数据处理">
+<meta property="og:url" content="https://110.41.172.90/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring data jpa 数据处理详细教程spring in action Spring 入门详细教程请参考：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-action-v5-translate&#x2F;tree&#x2F;master&#x2F;di-3-zhang-chu-li-shu-ju 源码如下：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-acti">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-11T08:38:48.000Z">
+<meta property="article:modified_time" content="2023-05-11T09:02:23.747Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Spring in Action">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://110.41.172.90"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-spring-data-jpa-数据处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2023-05-11T08:38:48.000Z" itemprop="datePublished">2023-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      spring data jpa 数据处理
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="spring-data-jpa-数据处理"><a href="#spring-data-jpa-数据处理" class="headerlink" title="spring data jpa 数据处理"></a>spring data jpa 数据处理</h3><h4 id="详细教程"><a href="#详细教程" class="headerlink" title="详细教程"></a>详细教程</h4><p><a target="_blank" rel="noopener" href="https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/di-3-zhang-chu-li-shu-ju">spring in action Spring 入门详细教程请参考：https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/di-3-zhang-chu-li-shu-ju</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/spring-in-action-5-samples-master">源码如下：https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/spring-in-action-5-samples-master</a></p>
+<h4 id="将要做的事情"><a href="#将要做的事情" class="headerlink" title="将要做的事情"></a>将要做的事情</h4><ul>
+<li>将taco 和 order 数据保存到数据库中</li>
+</ul>
+<h4 id="开始之前的事情"><a href="#开始之前的事情" class="headerlink" title="开始之前的事情"></a>开始之前的事情</h4><p>引入依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.h2database&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;h2&lt;/artifactId&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>这里使用h2数据库<br>Spring Data JPA 可用于具有 JPA starter 的 Spring Boot 应用程序。上面 starter 依赖不仅带来了 Spring Data JPA，还包括 Hibernate 作为 JPA 的实现：</p>
+<blockquote>
+<p>import 如果想使用不同的 JPA 实现，那么至少需要排除 Hibernate 依赖，并包含所选择的 JPA 库。例如，要使用 EclipseLink 而不是 Hibernate，需要按如下方式更改构建：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;hibernate-entitymanager&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;org.hibernate&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">​</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;eclipselink&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.5.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="注解域作为实体"><a href="#注解域作为实体" class="headerlink" title="注解域作为实体"></a>注解域作为实体</h4><p>将Ingredient 改为如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package tacos;</span><br><span class="line">​</span><br><span class="line">import javax.persistence.Entity;</span><br><span class="line">import javax.persistence.Id;</span><br><span class="line">import lombok.AccessLevel;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.NoArgsConstructor;</span><br><span class="line">import lombok.RequiredArgsConstructor;</span><br><span class="line">​</span><br><span class="line">@Data</span><br><span class="line">@RequiredArgsConstructor</span><br><span class="line">@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)</span><br><span class="line">@Entity</span><br><span class="line">public class Ingredient &#123;</span><br><span class="line">    @Id</span><br><span class="line">    private final String id;</span><br><span class="line">    private final String name;</span><br><span class="line">    private final Type type;</span><br><span class="line">    </span><br><span class="line">    public static enum Type &#123;</span><br><span class="line">        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了将其声明为 JPA 实体，必须使用 @Entity 注解。它的 id 属性必须使用 @Id 进行注解，以便将其指定为惟一标识数据库中实体的属性。</p>
+<p>除了特定于 JPA 的注解之外，还在类级别上添加了 @NoArgsConstructor 注解。JPA 要求实体有一个无参构造函数，所以 Lombok 的 @NoArgsConstructor 实现了这一点。但是要是不希望使用它，可以通过将 access 属性设置为 AccessLevel.PRIVATE 来将其设置为私有。因为必须设置 final 属性，所以还要将 force 属性设置为 true，这将导致 Lombok 生成的构造函数将它们设置为 null。</p>
+<p>还添加了一个 @RequiredArgsConstructor。@Data 隐式地添加了一个必需的有参构造函数，但是当使用 @NoArgsConstructor 时，该构造函数将被删除。显式的 @RequiredArgsConstructor 确保除了私有无参数构造函数外，仍然有一个必需有参构造函数。</p>
+<h6 id="注解Taco"><a href="#注解Taco" class="headerlink" title="注解Taco"></a>注解Taco</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package tacos;</span><br><span class="line">​</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import javax.persistence.Entity;</span><br><span class="line">import javax.persistence.GeneratedValue;</span><br><span class="line">import javax.persistence.GenerationType;</span><br><span class="line">import javax.persistence.Id;</span><br><span class="line">import javax.persistence.ManyToMany;</span><br><span class="line">import javax.persistence.OneToMany;</span><br><span class="line">import javax.persistence.PrePersist;</span><br><span class="line">import javax.validation.constraints.NotNull;</span><br><span class="line">import javax.validation.constraints.Size;</span><br><span class="line">import lombok.Data;</span><br><span class="line">​</span><br><span class="line">@Data</span><br><span class="line">@Entity</span><br><span class="line">public class Taco &#123;</span><br><span class="line">    </span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy=GenerationType.AUTO)</span><br><span class="line">    private Long id;</span><br><span class="line">    </span><br><span class="line">    @NotNull</span><br><span class="line">    @Size(min=5, message=&quot;Name must be at least 5 characters long&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    private Date createdAt;</span><br><span class="line">    </span><br><span class="line">    @ManyToMany(targetEntity=Ingredient.class)</span><br><span class="line">    @Size(min=1, message=&quot;You must choose at least 1 ingredient&quot;)</span><br><span class="line">    private List&lt;Ingredient&gt; ingredients;</span><br><span class="line">    </span><br><span class="line">    @PrePersist</span><br><span class="line">    void createdAt() &#123;</span><br><span class="line">        this.createdAt = new Date();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@PrePersist 注解。将使用它将 createdAt 属性设置为保存 Taco 之前的当前日期和时间。</p>
+<h6 id="注解Order"><a href="#注解Order" class="headerlink" title="注解Order"></a>注解Order</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package tacos;</span><br><span class="line">​</span><br><span class="line">import java.io.Serializable;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.List;</span><br><span class="line">import javax.persistence.Entity;</span><br><span class="line">import javax.persistence.GeneratedValue;</span><br><span class="line">import javax.persistence.GenerationType;</span><br><span class="line">import javax.persistence.Id;</span><br><span class="line">import javax.persistence.ManyToMany;</span><br><span class="line">import javax.persistence.OneToMany;</span><br><span class="line">import javax.persistence.PrePersist;</span><br><span class="line">import javax.persistence.Table;</span><br><span class="line">import javax.validation.constraints.Digits;</span><br><span class="line">import javax.validation.constraints.Pattern;</span><br><span class="line">import org.hibernate.validator.constraints.CreditCardNumber;</span><br><span class="line">import org.hibernate.validator.constraints.NotBlank;</span><br><span class="line">import lombok.Data;</span><br><span class="line">​</span><br><span class="line">@Data</span><br><span class="line">@Entity</span><br><span class="line">@Table(name=&quot;Taco_Order&quot;)</span><br><span class="line">public class Order implements Serializable &#123;</span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line">    </span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy=GenerationType.AUTO)</span><br><span class="line">    private Long id;</span><br><span class="line">    </span><br><span class="line">    private Date placedAt;</span><br><span class="line">    </span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    @ManyToMany(targetEntity=Taco.class)</span><br><span class="line">    private List&lt;Taco&gt; tacos = new ArrayList&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    public void addDesign(Taco design) &#123;</span><br><span class="line">        this.tacos.add(design);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @PrePersist</span><br><span class="line">    void placedAt() &#123;</span><br><span class="line">        this.placedAt = new Date();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Table。这指定订单实体应该持久化到数据库中名为 Taco_Order 的表中。</p>
+<h4 id="声明-JPA-repository"><a href="#声明-JPA-repository" class="headerlink" title="声明 JPA repository"></a>声明 JPA repository</h4><h5 id="声明-IngredientRepository"><a href="#声明-IngredientRepository" class="headerlink" title="声明 IngredientRepository"></a>声明 IngredientRepository</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package tacos.data;</span><br><span class="line">​</span><br><span class="line">import org.springframework.data.repository.CrudRepository;</span><br><span class="line">import tacos.Ingredient;</span><br><span class="line">​</span><br><span class="line">public interface IngredientRepository extends CrudRepository&lt;Ingredient, String&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>扩展CrudRepository<br>CrudRepository 为 CRUD（创建、读取、更新、删除）操作声明了十几个方法。注意，它是参数化的，第一个参数是存储库要持久化的实体类型，第二个参数是实体 id 属性的类型。对于 IngredientRepository，参数应该是 Ingredient 和 String 类型。</p>
+<h5 id="声明-TacoRepository"><a href="#声明-TacoRepository" class="headerlink" title="声明  TacoRepository"></a>声明  TacoRepository</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package tacos.data;</span><br><span class="line">​</span><br><span class="line">import org.springframework.data.repository.CrudRepository;</span><br><span class="line">import tacos.Taco;</span><br><span class="line">​</span><br><span class="line">public interface TacoRepository extends CrudRepository&lt;Taco, Long&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="声明OrderRepository"><a href="#声明OrderRepository" class="headerlink" title="声明OrderRepository"></a>声明OrderRepository</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package tacos.data;</span><br><span class="line">​</span><br><span class="line">import org.springframework.data.repository.CrudRepository;</span><br><span class="line">import tacos.Order;</span><br><span class="line">​</span><br><span class="line">public interface OrderRepository extends CrudRepository&lt;Order, Long&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="关于自定义-JPA-repository"><a href="#关于自定义-JPA-repository" class="headerlink" title="关于自定义 JPA repository"></a><a target="_blank" rel="noopener" href="https://github.com/PotoYang/spring-in-action-v5-translate/blob/master/di-3-zhang-chu-li-shu-ju/3.2-shi-yong-spring-data-jpa-chi-jiu-hua-shu-ju/3.2.4-zi-ding-yi-jpa-repository.md">关于自定义 JPA repository</a></h4><h4 id="更改控制器contorller"><a href="#更改控制器contorller" class="headerlink" title="更改控制器contorller"></a>更改控制器contorller</h4><h5 id="更改-DesignTacoController-java"><a href="#更改-DesignTacoController-java" class="headerlink" title="更改 DesignTacoController.java"></a>更改 DesignTacoController.java</h5><ol>
+<li><p>将IngredientRepository，TacoRepository 注入 DesignTacoController.java中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/design&quot;)</span><br><span class="line">@SessionAttributes(&quot;order&quot;)</span><br><span class="line">public class DesignTacoController &#123;</span><br><span class="line">    private final IngredientRepository ingredientRepo;</span><br><span class="line">    private TacoRepository designRepo;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    public DesignTacoController(</span><br><span class="line">        IngredientRepository ingredientRepo,</span><br><span class="line">        TacoRepository designRepo) &#123;</span><br><span class="line">        this.ingredientRepo = ingredientRepo;</span><br><span class="line">        this.designRepo = designRepo;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">​</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>保存design</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">   public String processDesign(</span><br><span class="line">       @Valid Taco design, Errors errors,</span><br><span class="line">       @ModelAttribute Order order) &#123;</span><br><span class="line"></span><br><span class="line">       if (errors.hasErrors()) &#123;</span><br><span class="line">           return &quot;design&quot;;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       Taco saved = designRepo.save(design);</span><br><span class="line">       order.addDesign(saved);</span><br><span class="line"></span><br><span class="line">       return &quot;redirect:/orders/current&quot;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加转换器IngredientByIdConverter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package tacos.web;</span><br><span class="line"></span><br><span class="line">import java.util.Optional;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.core.convert.converter.Converter;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import tacos.Ingredient;</span><br><span class="line">import tacos.data.IngredientRepository;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class IngredientByIdConverter implements Converter&lt;String, Ingredient&gt; &#123;</span><br><span class="line"></span><br><span class="line">  private IngredientRepository ingredientRepo;</span><br><span class="line"></span><br><span class="line">  @Autowired</span><br><span class="line">  public IngredientByIdConverter(IngredientRepository ingredientRepo) &#123;</span><br><span class="line">    this.ingredientRepo = ingredientRepo;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  @Override</span><br><span class="line">  public Ingredient convert(String id) &#123;</span><br><span class="line">    Optional&lt;Ingredient&gt; optionalIngredient = ingredientRepo.findById(id);</span><br><span class="line">	return optionalIngredient.isPresent() ?</span><br><span class="line">		   optionalIngredient.get() : null;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="保存order，并删除缓存中的order"><a href="#保存order，并删除缓存中的order" class="headerlink" title="保存order，并删除缓存中的order"></a>保存order，并删除缓存中的order</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">public String processOrder(@Valid Order order, Errors errors, SessionStatus sessionStatus) &#123;</span><br><span class="line">  if (errors.hasErrors()) &#123;</span><br><span class="line">    return &quot;orderForm&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  orderRepo.save(order);</span><br><span class="line">  sessionStatus.setComplete();</span><br><span class="line">  </span><br><span class="line">  return &quot;redirect:/&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://110.41.172.90/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" data-id="clhixaaf3000azgulcprjfuz9" data-title="spring data jpa 数据处理" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-in-Action/" rel="tag">Spring in Action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          spring security 增加登录和安全保护
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/10/%E5%BC%80%E5%8F%91-Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">开发 Web 应用程序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-in-Action/" rel="tag">Spring in Action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/" rel="tag">spring boot</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Spring-in-Action/" style="font-size: 20px;">Spring in Action</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring boot</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/">spring security 增加登录和安全保护</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">spring data jpa 数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/10/%E5%BC%80%E5%8F%91-Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">开发 Web 应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/09/Spring-%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">Spring 入门（二）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/09/Spring-%E5%85%A5%E9%97%A8/">Spring 入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

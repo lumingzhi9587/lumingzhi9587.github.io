@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>spring security 增加登录和安全保护 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="spring security 增加登录和安全保护详细教程spring in action Spring 入门详细教程请参考：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-action-v5-translate&#x2F;tree&#x2F;master&#x2F;di-4-zhang-spring-an-quan 源码如下：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring security 增加登录和安全保护">
+<meta property="og:url" content="https://110.41.172.90/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring security 增加登录和安全保护详细教程spring in action Spring 入门详细教程请参考：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-in-action-v5-translate&#x2F;tree&#x2F;master&#x2F;di-4-zhang-spring-an-quan 源码如下：https:&#x2F;&#x2F;github.com&#x2F;PotoYang&#x2F;spring-i">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-11T09:03:59.000Z">
+<meta property="article:modified_time" content="2023-05-11T09:23:45.201Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Spring in Action">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://110.41.172.90"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-spring-security-增加登录和安全保护" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/" class="article-date">
+  <time class="dt-published" datetime="2023-05-11T09:03:59.000Z" itemprop="datePublished">2023-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      spring security 增加登录和安全保护
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="spring-security-增加登录和安全保护"><a href="#spring-security-增加登录和安全保护" class="headerlink" title="spring security 增加登录和安全保护"></a>spring security 增加登录和安全保护</h3><h4 id="详细教程"><a href="#详细教程" class="headerlink" title="详细教程"></a>详细教程</h4><p><a target="_blank" rel="noopener" href="https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/di-4-zhang-spring-an-quan">spring in action Spring 入门详细教程请参考：https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/di-4-zhang-spring-an-quan</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/spring-in-action-5-samples-master">源码如下：https://github.com/PotoYang/spring-in-action-v5-translate/tree/master/spring-in-action-5-samples-master</a></p>
+<h4 id="将要做的事情"><a href="#将要做的事情" class="headerlink" title="将要做的事情"></a>将要做的事情</h4><ul>
+<li>自动配置 Spring Security</li>
+<li>自定义用户存储</li>
+<li>自定义登录页面</li>
+</ul>
+<h4 id="开始之前的事情"><a href="#开始之前的事情" class="headerlink" title="开始之前的事情"></a>开始之前的事情</h4><p>增加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="增加依赖后启动项目"><a href="#增加依赖后启动项目" class="headerlink" title="增加依赖后启动项目"></a>增加依赖后启动项目</h4><p>在控制台console中将打印类似的<br><code>Using default security password: 087cfc6a-027d-44bc-95d7-cbb3a798a1ea</code><br>再访问项目就需要登录，用户名是 <code>user</code>,密码是控制台中打印的 <code>087cfc6a-027d-44bc-95d7-cbb3a798a1ea</code><br>现在只有 <code>user</code> 用户能够使用你的项目</p>
+<h4 id="配置Spring-Security"><a href="#配置Spring-Security" class="headerlink" title="配置Spring Security"></a>配置Spring Security</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package tacos.security;</span><br><span class="line">​</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;</span><br><span class="line">import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;</span><br><span class="line">​</span><br><span class="line">@Configuration</span><br><span class="line">@EnableWebSecurity</span><br><span class="line">public class SecurityConfig extends WebSecurityConfigurerAdapter &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>内存储存用户，可以用于测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">    auth</span><br><span class="line">        .inMemoryAuthentication()</span><br><span class="line">            .withUser(&quot;buzz&quot;)</span><br><span class="line">                .password(&quot;infinity&quot;)</span><br><span class="line">                .authorities(&quot;ROLE_USER&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .withUser(&quot;woody&quot;)</span><br><span class="line">                .password(&quot;bullseye&quot;)</span><br><span class="line">                .authorities(&quot;ROLE_USER&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在使用spring security 5.x 时 password需要编码，不想编码可以使用{noop},例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">    auth</span><br><span class="line">        .inMemoryAuthentication()</span><br><span class="line">            .withUser(&quot;buzz&quot;)</span><br><span class="line">                .password(&quot;&#123;noop&#125;infinity&quot;)</span><br><span class="line">                .authorities(&quot;ROLE_USER&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .withUser(&quot;woody&quot;)</span><br><span class="line">                .password(&quot;&#123;noop&#125;bullseye&quot;)</span><br><span class="line">                .authorities(&quot;ROLE_USER&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="自定义用户身份验证"><a href="#自定义用户身份验证" class="headerlink" title="自定义用户身份验证"></a>自定义用户身份验证</h4><h5 id="创建User-类"><a href="#创建User-类" class="headerlink" title="创建User 类"></a>创建User 类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">package tacos;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Collection;</span><br><span class="line">import javax.persistence.Entity;</span><br><span class="line">import javax.persistence.GeneratedValue;</span><br><span class="line">import javax.persistence.GenerationType;</span><br><span class="line">import javax.persistence.Id;</span><br><span class="line">import org.springframework.security.core.GrantedAuthority;</span><br><span class="line">import org.springframework.security.core.authority.SimpleGrantedAuthority;</span><br><span class="line">import org.springframework.security.core.userdetails.UserDetails;</span><br><span class="line">import lombok.AccessLevel;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.NoArgsConstructor;</span><br><span class="line">import lombok.RequiredArgsConstructor;</span><br><span class="line"></span><br><span class="line">@Entity</span><br><span class="line">@Data</span><br><span class="line">@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)</span><br><span class="line">@RequiredArgsConstructor</span><br><span class="line">public class User implements UserDetails &#123;</span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line">    </span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy=GenerationType.AUTO)</span><br><span class="line">    private Long id;</span><br><span class="line">    </span><br><span class="line">    private final String username;</span><br><span class="line">    private final String password;</span><br><span class="line">    private final String fullname;</span><br><span class="line">    private final String street;</span><br><span class="line">    private final String city;</span><br><span class="line">    private final String state;</span><br><span class="line">    private final String zip;</span><br><span class="line">    private final String phoneNumber;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() &#123;</span><br><span class="line">        return Arrays.asList(new SimpleGrantedAuthority(&quot;ROLE_USER&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public boolean isAccountNonExpired() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public boolean isAccountNonLocked() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public boolean isCredentialsNonExpired() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public boolean isEnabled() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="创建UserRepository"><a href="#创建UserRepository" class="headerlink" title="创建UserRepository"></a>创建UserRepository</h5><p>从数据库中来获取用户，保存用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package tacos.data;</span><br><span class="line">import org.springframework.data.repository.CrudRepository;</span><br><span class="line">import tacos.User;</span><br><span class="line"></span><br><span class="line">public interface UserRepository extends CrudRepository&lt;User, Long&gt; &#123;</span><br><span class="line">    User findByUsername(String username);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="实现Spring-Security-的-UserDetailsService接口"><a href="#实现Spring-Security-的-UserDetailsService接口" class="headerlink" title="实现Spring Security 的 UserDetailsService接口"></a>实现Spring Security 的 UserDetailsService接口</h5><p>UserDetailsService接口的实现是给定一个用户的用户名，期望返回一个 UserDetails 对象，如果给定的用户名没有显示任何结果，则抛出一个 UsernameNotFoundException。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package tacos.security;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.security.core.userdetails.UserDetails;</span><br><span class="line">import org.springframework.security.core.userdetails.UserDetailsService;</span><br><span class="line">import org.springframework.security.core.userdetails.UsernameNotFoundException;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line">import tacos.User;</span><br><span class="line">import tacos.data.UserRepository;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class UserRepositoryUserDetailsService implements UserDetailsService &#123;</span><br><span class="line">    </span><br><span class="line">    private UserRepository userRepo;</span><br><span class="line">    </span><br><span class="line">    @Autowired</span><br><span class="line">    public UserRepositoryUserDetailsService(UserRepository userRepo) &#123;</span><br><span class="line">        this.userRepo = userRepo;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public UserDetails loadUserByUsername(String username)</span><br><span class="line">        throws UsernameNotFoundException &#123;</span><br><span class="line">        User user = userRepo.findByUsername(username);</span><br><span class="line">        if (user != null) &#123;</span><br><span class="line">            return user;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        throw new UsernameNotFoundException(&quot;User &#x27;&quot; + username + &quot;&#x27; not found&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="spring-security-配置类中-添加userDetailsService"><a href="#spring-security-配置类中-添加userDetailsService" class="headerlink" title="spring security 配置类中 添加userDetailsService"></a>spring security 配置类中 添加userDetailsService</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public PasswordEncoder encoder() &#123;</span><br><span class="line">    return new StandardPasswordEncoder(&quot;53cr3t&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">    auth</span><br><span class="line">        .userDetailsService(userDetailsService)</span><br><span class="line">        .passwordEncoder(encoder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="处理用户注册"><a href="#处理用户注册" class="headerlink" title="处理用户注册"></a>处理用户注册</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package tacos.security;</span><br><span class="line"></span><br><span class="line">import org.springframework.security.crypto.password.PasswordEncoder;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import tacos.data.UserRepository;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/register&quot;)</span><br><span class="line">public class RegistrationController &#123;</span><br><span class="line">    </span><br><span class="line">    private UserRepository userRepo;</span><br><span class="line">    private PasswordEncoder passwordEncoder;</span><br><span class="line">    </span><br><span class="line">    public RegistrationController(</span><br><span class="line">        UserRepository userRepo, PasswordEncoder passwordEncoder) &#123;</span><br><span class="line">        this.userRepo = userRepo;</span><br><span class="line">        this.passwordEncoder = passwordEncoder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @GetMapping</span><br><span class="line">    public String registerForm() &#123;</span><br><span class="line">        return &quot;registration&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @PostMapping</span><br><span class="line">    public String processRegistration(RegistrationForm form) &#123;</span><br><span class="line">        userRepo.save(form.toUser(passwordEncoder));</span><br><span class="line">        return &quot;redirect:/login&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><br><span class="line">      xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Taco Cloud&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;Register&lt;/h1&gt;</span><br><span class="line">        &lt;img th:src=&quot;@&#123;/images/TacoCloud.png&#125;&quot;/&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;form method=&quot;POST&quot; th:action=&quot;@&#123;/register&#125;&quot; id=&quot;registerForm&quot;&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;username&quot;&gt;Username: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;username&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;password&quot;&gt;Password: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;password&quot; name=&quot;password&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;confirm&quot;&gt;Confirm password: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;password&quot; name=&quot;confirm&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;fullname&quot;&gt;Full name: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;fullname&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;street&quot;&gt;Street: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;street&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;city&quot;&gt;City: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;city&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;state&quot;&gt;State: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;state&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;zip&quot;&gt;Zip: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;zip&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;phone&quot;&gt;Phone: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;phone&quot;/&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;input type=&quot;submit&quot; value=&quot;Register&quot;/&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package tacos.security;</span><br><span class="line"></span><br><span class="line">import org.springframework.security.crypto.password.PasswordEncoder;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import tacos.User;</span><br><span class="line"></span><br><span class="line">@Data</span><br><span class="line">public class RegistrationForm &#123;</span><br><span class="line">    </span><br><span class="line">    private String username;</span><br><span class="line">    private String password;</span><br><span class="line">    private String fullname;</span><br><span class="line">    private String street;</span><br><span class="line">    private String city;</span><br><span class="line">    private String state;</span><br><span class="line">    private String zip;</span><br><span class="line">    private String phone;</span><br><span class="line">    </span><br><span class="line">    public User toUser(PasswordEncoder passwordEncoder) &#123;</span><br><span class="line">        return new User(</span><br><span class="line">            username, passwordEncoder.encode(password),</span><br><span class="line">            fullname, street, city, state, zip, phone);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="处理web-请求"><a href="#处理web-请求" class="headerlink" title="处理web 请求"></a>处理web 请求</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void configure(HttpSecurity http) throws Exception &#123;</span><br><span class="line">    http</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">            .antMatchers(&quot;/design&quot;, &quot;/orders&quot;)</span><br><span class="line">            .access(&quot;hasRole(&#x27;ROLE_USER&#x27;)&quot;)</span><br><span class="line">            .antMatchers(&quot;/&quot;, &quot;/**&quot;).access(&quot;permitAll&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .formLogin()</span><br><span class="line">            .loginPage(&quot;/login&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .logout()</span><br><span class="line">            .logoutSuccessUrl(&quot;/&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .csrf()</span><br><span class="line">            .ignoringAntMatchers(&quot;/h2-console/**&quot;)</span><br><span class="line">            .and()</span><br><span class="line">            .headers()</span><br><span class="line">            .frameOptions()</span><br><span class="line">            .sameOrigin()</span><br><span class="line">    ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>处理用户登录</p>
+<p>注册login controller</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void addViewControllers(ViewControllerRegistry registry) &#123;</span><br><span class="line">    registry.addViewController(&quot;/&quot;).setViewName(&quot;home&quot;);</span><br><span class="line">    registry.addViewController(&quot;/login&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加login.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><br><span class="line">      xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;Taco Cloud&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;Login&lt;/h1&gt;</span><br><span class="line">        &lt;img th:src=&quot;@&#123;/images/TacoCloud.png&#125;&quot;/&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div th:if=&quot;$&#123;error&#125;&quot;&gt;</span><br><span class="line">            Unable to login. Check your username and password.</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;p&gt;New here? Click&lt;a th:href=&quot;@&#123;/register&#125;&quot;&gt;here&lt;/a&gt; to register.&lt;/p&gt;</span><br><span class="line">        &lt;!-- tag::thAction[] --&gt;</span><br><span class="line">        &lt;form method=&quot;POST&quot; th:action=&quot;@&#123;/login&#125;&quot; id=&quot;loginForm&quot;&gt;</span><br><span class="line">        &lt;!-- end::thAction[] --&gt;</span><br><span class="line">            &lt;label for=&quot;username&quot;&gt;Username: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; /&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;label for=&quot;password&quot;&gt;Password: &lt;/label&gt;</span><br><span class="line">            &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; /&gt;&lt;br/&gt;</span><br><span class="line">            </span><br><span class="line">            &lt;input type=&quot;submit&quot; value=&quot;Login&quot;/&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://110.41.172.90/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/" data-id="clhixaaf3000bzgul3yescx0g" data-title="spring security 增加登录和安全保护" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-in-Action/" rel="tag">Spring in Action</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">spring data jpa 数据处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-in-Action/" rel="tag">Spring in Action</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring-boot/" rel="tag">spring boot</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Spring-in-Action/" style="font-size: 20px;">Spring in Action</a> <a href="/tags/spring-boot/" style="font-size: 10px;">spring boot</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/11/spring-security-%E5%A2%9E%E5%8A%A0%E7%99%BB%E5%BD%95%E5%92%8C%E5%AE%89%E5%85%A8%E4%BF%9D%E6%8A%A4/">spring security 增加登录和安全保护</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/11/spring-data-jpa-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">spring data jpa 数据处理</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/10/%E5%BC%80%E5%8F%91-Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/">开发 Web 应用程序</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/09/Spring-%E5%85%A5%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">Spring 入门（二）</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/09/Spring-%E5%85%A5%E9%97%A8/">Spring 入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
